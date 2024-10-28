@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { IoMoon, IoSunny } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 enum I_ThemeNames {
-    "light" = "nord",
+    "light" = "light",
     "dark" = "dim"
 }
 
@@ -31,21 +32,24 @@ export default function Navbar() {
                 <ul
                     tabIndex={0}
                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                    onClickCapture={()=>{
+                        (document.activeElement as HTMLElement).blur();
+                    }}
                 >
                     <li>
-                    <a>Homepage</a>
+                    <a>Strona główna</a>
                     </li>
                     <li>
-                    <a>Portfolio</a>
+                    <a>Sklep</a>
                     </li>
                     <li>
-                    <a>About</a>
+                    <a>O nas</a>
                     </li>
                 </ul>
                 </div>
             </div>
             <div className="navbar-center">
-                <a className="btn btn-ghost text-xl">PlayGrid</a>
+                <Link to="/" className="btn btn-ghost text-xl">PlayGrid</Link>
             </div>
             <div className="navbar-end">
                 <button
@@ -97,12 +101,15 @@ export default function Navbar() {
                   </div>
                   <ul
                     tabIndex={0}
-                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                    onClickCapture={()=>{
+                        (document.activeElement as HTMLElement).blur();
+                    }}>
                     <li>
-                      <a className="justify-between">
+                      <Link to="/panel" className="justify-between">
                         Panel sterowania
-                        <span className="badge">New</span>
-                      </a>
+                        <span className="badge">New!</span>
+                      </Link>
                     </li>
                     <li><a>Ustawienia konta</a></li>
                     <li><a>Wyloguj</a></li>
