@@ -4,11 +4,9 @@ import { sleep } from "../../utils/asyncUtils";
 export default function ServerPanel() {
     const [loading, setLoading] = useState<boolean>(true)
     useEffect(()=>{
-        console.log("#1");
         (async ()=>{
             await sleep(1400)
             setLoading(false)
-            console.log("#2");
         })()
     }, [])
     return (

@@ -7,11 +7,9 @@ import clsx from "clsx";
 export default function Panel() {
     const [loading, setLoading] = useState<boolean>(true)
     useEffect(()=>{
-        console.log("#1");
         (async ()=>{
             await sleep(2500)
             setLoading(false)
-            console.log("#2");
         })()
     }, [])
     return (
@@ -73,7 +71,6 @@ export default function Panel() {
                             </p>
                             <div className={clsx("card-actions justify-end mt-1", {"skeleton": loading})}>
                                 <div className={clsx("badge badge-outline", {"invisible": loading})}>Wyłączony</div>
-                                <div className={clsx("badge text-success-content badge-success", {"invisible": loading})}>Minecraft</div>
                             </div>
                         </div>
                     </div>
@@ -99,8 +96,7 @@ export default function Panel() {
                                     <span className={clsx({"invisible": loading})}>Drugi serwer stworzony na potrzeby testów.</span>
                                 </p>
                                 <div className={clsx("card-actions justify-end mt-1", {"skeleton": loading})}>
-                                    <div className={clsx("badge badge-outline", {"invisible": loading})}>Wyłączony</div>
-                                    <div className={clsx("badge text-success-content badge-success", {"invisible": loading})}>Minecraft</div>
+                                    <div className={clsx("badge badge-success", {"invisible": loading})}>Włączony</div>
                                 </div>
                             </div>
                         </div>
