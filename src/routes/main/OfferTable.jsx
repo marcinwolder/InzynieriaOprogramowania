@@ -17,7 +17,7 @@ export default function OfferTable() {
                 <div className="bg-base-200 pt-2 rounded-2xl">
                     <div className="card bg-base-100 shadow-lg h-96">
                         <figure>
-                            <img src="/src/assets/abonament/level_1-removebg-preview.png" className="h-56" alt="Shoes" />
+                            <img src="/assets/abonament/level_1-removebg-preview.png" className="h-56" alt="beige computer" />
                         </figure>
                         <div className="card-body">
                             Abonament <b>Lite</b>
@@ -32,7 +32,7 @@ export default function OfferTable() {
                     <div className="mx-auto w-fit text-success-content my-2">NAJCZĘŚCIEJ WYBIERANY!</div>
                     <div className="card bg-base-100 shadow-lg h-[26rem]">
                         <figure>
-                            <img src="/src/assets/abonament/level_3-removebg-preview.png" className="h-56" alt="Shoes" />
+                            <img src="/assets/abonament/level_3-removebg-preview.png" className="h-56" alt="so ol automat" />
                         </figure>
                         <div className="card-body">
                             Abonament <b>Premium</b>
@@ -46,7 +46,7 @@ export default function OfferTable() {
                 <div className="bg-base-300 pt-3 rounded-2xl">
                     <div className="card bg-base-100 shadow-lg h-96">
                         <figure>
-                            <img src="/src/assets/abonament/level_2-removebg-preview.png" className="h-56" alt="Shoes" />
+                            <img src="/assets/abonament/level_2-removebg-preview.png" className="h-56" alt="white MacBook" />
                         </figure>
                         <div className="card-body">
                             Abonament <b>Standard</b>

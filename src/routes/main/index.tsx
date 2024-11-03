@@ -25,7 +25,7 @@ export default function Main() {
     return (
         <>
             <div className="flex px-8 items-center gap-8 w-fit h-screen -mt-16 mx-auto">
-                <img className="h-96" src="/src/assets/logo.jpg" alt="logo" />
+                <img className="h-96" src="/assets/logo.jpg" alt="logo" />
                 <div className="">
                     <h1 className="text-6xl font-serif">Twój hosting serwerów<br/>do grania w kratkę</h1>
                     <Typewriter />

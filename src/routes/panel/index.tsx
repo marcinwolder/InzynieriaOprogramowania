@@ -53,11 +53,11 @@ export default function Panel() {
                         <figure className={clsx({"skeleton": loading})}>
                             <img
                             className={clsx({"invisible": loading})}
-                            src="/src/assets/server/server_2-removebg-preview.png"
-                            alt="server" />
+                            src="/assets/server/server_2-removebg-preview.png"
+                            alt="laptop with random graphics on the screen" />
                             <img
                             className={clsx("absolute w-1/6 rounded-md top-4 right-4", {"invisible": loading})}
-                            src="/src/assets/server/minecraft.png"
+                            src="/assets/server/minecraft.png"
                             alt="minecraft logo" />
                         </figure>
                         <div className="card-body">
@@ -79,11 +79,11 @@ export default function Panel() {
                             <figure className={clsx({"skeleton": loading})}>
                                 <img
                                 className={clsx({"invisible": loading})}
-                                src="/src/assets/server/server_3-removebg-preview.png"
-                                alt="server" />
+                                src="/assets/server/server_3-removebg-preview.png"
+                                alt="another laptop with graphics displayed on the screen" />
                                 <img
                                 className={clsx("absolute w-1/6 rounded-md top-4 right-4", {"invisible": loading})}
-                                src="/src/assets/server/minecraft.png"
+                                src="/assets/server/minecraft.png"
                                 alt="minecraft logo" />
                             </figure>
                             <div className="card-body">
