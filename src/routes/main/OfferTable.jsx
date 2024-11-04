@@ -32,7 +32,7 @@ export default function OfferTable() {
                     <div className="mx-auto w-fit text-success-content my-2">NAJCZĘŚCIEJ WYBIERANY!</div>
                     <div className="card bg-base-100 shadow-lg h-[26rem]">
                         <figure>
-                            <img src="/assets/abonament/level_3-removebg-preview.png" className="h-56" alt="so ol automat" />
+                            <img src="/assets/abonament/level_3-removebg-preview.png" className="h-56" alt="old computer" />
                         </figure>
                         <div className="card-body">
                             Abonament <b>Premium</b>
