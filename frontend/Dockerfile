@@ -1,7 +1,7 @@
 # Frontend Dockerfile
 FROM node:16 AS build
-WORKDIR /app
-COPY package*.json ./
+WORKDIR /.
+COPY ../package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
