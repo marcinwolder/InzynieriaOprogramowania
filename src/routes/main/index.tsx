@@ -4,6 +4,7 @@ import { FaArrowDown } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import OfferTable from "./OfferTable";
 import { FaArrowTurnDown } from "react-icons/fa6";
+import logoSrc from "/logo.jpg"
 
 export default function Main() {
     const [scrolled, setScrolled] = useState(false)
@@ -25,7 +26,7 @@ export default function Main() {
     return (
         <>
             <div className="flex px-8 items-center gap-8 w-fit h-screen -mt-16 mx-auto">
-                <img className="h-96" src="./logo.jpg" alt="logo" />
+                <img className="h-96" src={logoSrc} alt="logo" />
                 <div className="">
                     <h1 className="text-6xl font-serif">Twój hosting serwerów<br/>do grania w kratkę</h1>
                     <Typewriter />

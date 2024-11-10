@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import { sleep } from "../../utils/asyncUtils";
 import clsx from "clsx";
 
+import server2Src from "../../assets/server/server_2-removebg-preview.png"
+import server3Src from "../../assets/server/server_3-removebg-preview.png"
+import minecraftSrc from "../../assets/server/minecraft.png"
+
 export default function Panel() {
     const [loading, setLoading] = useState<boolean>(true)
     useEffect(()=>{
@@ -53,11 +57,11 @@ export default function Panel() {
                         <figure className={clsx({"skeleton": loading})}>
                             <img
                             className={clsx({"invisible": loading})}
-                            src="/assets/server/server_2-removebg-preview.png"
+                            src={server2Src}
                             alt="laptop with random graphics on the screen" />
                             <img
                             className={clsx("absolute w-1/6 rounded-md top-4 right-4", {"invisible": loading})}
-                            src="/assets/server/minecraft.png"
+                            src={minecraftSrc}
                             alt="minecraft logo" />
                         </figure>
                         <div className="card-body">
@@ -79,11 +83,11 @@ export default function Panel() {
                             <figure className={clsx({"skeleton": loading})}>
                                 <img
                                 className={clsx({"invisible": loading})}
-                                src="/assets/server/server_3-removebg-preview.png"
+                                src={server3Src}
                                 alt="another laptop with graphics displayed on the screen" />
                                 <img
                                 className={clsx("absolute w-1/6 rounded-md top-4 right-4", {"invisible": loading})}
-                                src="/assets/server/minecraft.png"
+                                src={minecraftSrc}
                                 alt="minecraft logo" />
                             </figure>
                             <div className="card-body">
