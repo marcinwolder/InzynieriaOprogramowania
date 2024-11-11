@@ -41,7 +41,7 @@ def insert_record():
         cursor = connection.cursor()
 
         insert_query = "INSERT INTO test_table (name, age) VALUES (%s, %s)"
-        record = ("Marcin Cinek", 2115)
+        record = ("Alkoholik", 2137)
 
         cursor.execute(insert_query, record)
         connection.commit()
