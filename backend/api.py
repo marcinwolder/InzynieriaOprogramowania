@@ -6,7 +6,7 @@ host = "localhost"
 port = 3306
 user = "user"
 password = "password"
-database = "mydatabase"
+database = "inzynieriaoprogramowania-db-1"
 
 #winpty docker exec -it inzynieriaoprogramowania-db-1 mysql -u user -p
 
@@ -16,7 +16,6 @@ try:
         port=port,
         user=user,
         password=password,
-        database=database
     )
     
     if connection.is_connected():
@@ -42,7 +41,7 @@ def insert_record():
         cursor = connection.cursor()
 
         insert_query = "INSERT INTO test_table (name, age) VALUES (%s, %s)"
-        record = ("Jan Kowal", 69)
+        record = ("Marcin Cinek", 2115)
 
         cursor.execute(insert_query, record)
         connection.commit()

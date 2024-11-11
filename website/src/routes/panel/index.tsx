@@ -87,7 +87,7 @@ export default function Panel() {
                                 alt="another laptop with graphics displayed on the screen" />
                                 <img
                                 className={clsx("absolute w-1/6 rounded-md top-4 right-4", {"invisible": loading})}
-                                src={minecraftSrc}
+                                src="/assets/server/minecraft.png"
                                 alt="minecraft logo" />
                             </figure>
                             <div className="card-body">

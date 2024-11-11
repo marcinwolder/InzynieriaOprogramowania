@@ -1,7 +1,8 @@
-FROM node:16
-WORKDIR /.
-COPY package.json /.
+FROM node:18-alpine
+WORKDIR /website
+COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
-EXPOSE 3000
-CMD ["npm", "run", "dev"]
+ENV HOST 0.0.0.0
+EXPOSE 5173
+CMD ["npm", "run", "dev", "--", "--host"]

@@ -1,4 +1,4 @@
-#version: "3.8"
+version: "3.8"
 
 services:
   frontend:
@@ -6,22 +6,28 @@ services:
       context: ./website
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "5173:5173"
     depends_on:
       - backend
     volumes:
-      - .:/website   
+      - ./website:/app
+    environment:
+      - VITE_BACKEND_URL=http://backend:8000
 
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    environment:
-      - name=value
     ports:
-      - "3000:3000"
+      - "8000:8000"
     depends_on:
       - db
+    volumes:
+      - ./backend:/app
+    environment:
+      - DATABASE_URL=mysql://user:password@db/mydatabase  # Przykład połączenia z MySQL
+    networks:
+      - mynetwork
 
   db:
     image: mysql:8
@@ -33,7 +39,13 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - db_data:/data/db
+      - db_data:/var/lib/mysql
+    networks:
+      - mynetwork
 
 volumes:
   db_data:
+
+networks:
+  mynetwork:
+    driver: bridge
