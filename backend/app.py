@@ -1,7 +1,8 @@
-from fastapi import FastAPI
+from typing import Annotated, Any
+from fastapi import Depends, FastAPI
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, Session
 
 DATABASE_URL = "mysql://user:password@db/mydatabase"
 
@@ -13,13 +14,14 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 app = FastAPI()
 
-@app.get("/")
-def read_root():
-    return {"message": "No hej"}
-
 def get_db():
     db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
+
+@app.get("/")
+def read_root(db: Annotated[Session | None, Depends(get_db)]):
+    return {"message": "No hej"}
+

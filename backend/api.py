@@ -2,11 +2,11 @@ import mysql.connector
 from mysql.connector import Error
 import time
 
-host = "localhost"
+host = "db"
 port = 3306
-user = "user"
-password = "password"
-database = "inzynieriaoprogramowania-db-1"
+user = "root"
+password = "root_password"
+database = "mydatabase"
 
 #winpty docker exec -it inzynieriaoprogramowania-db-1 mysql -u user -p
 
