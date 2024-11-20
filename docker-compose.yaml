@@ -1,0 +1,43 @@
+services:
+    frontend:
+        build:
+            context: ./website
+            dockerfile: Dockerfile
+        ports:
+            - "80:80"
+        depends_on:
+            - backend
+        networks:
+            - projectNetwork
+
+    backend:
+        build:
+            context: ./api
+            dockerfile: Dockerfile
+        ports:
+            - "3000:3000"
+        depends_on:
+            - db
+        networks:
+            - projectNetwork
+
+    db:
+        image: mysql:8
+        environment:
+            - MYSQL_ROOT_PASSWORD=root_password
+            - MYSQL_DATABASE=playgrid
+            - MYSQL_USER=user
+            - MYSQL_PASSWORD=password
+        ports:
+            - "3306:3306"
+        volumes:
+            - db-volume:/var/lib/mysql
+            - ./db:/docker-entrypoint-initdb.d
+        networks:
+            - projectNetwork
+
+volumes:
+    db-volume:
+networks:
+    projectNetwork:
+        driver: bridge
