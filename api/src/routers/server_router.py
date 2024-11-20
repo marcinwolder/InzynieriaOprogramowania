@@ -39,7 +39,7 @@ class CreateServerBody(BaseModel):
     config: Dict[str, Any]
 class CreateServerResponse(BaseModel):
     msg: str
-    serverId = int
+    serverId: int
 @ServerRouter.put('/', responses={
     status.HTTP_401_UNAUTHORIZED: {'model': NotAuthorizedResponse},
     status.HTTP_402_PAYMENT_REQUIRED: {'model': PaymentRequiredResponse},
