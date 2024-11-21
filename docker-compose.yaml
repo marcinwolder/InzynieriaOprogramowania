@@ -8,7 +8,7 @@ services:
         depends_on:
             - backend
         networks:
-            - projectNetwork
+            - project_network
 
     backend:
         build:
@@ -19,7 +19,7 @@ services:
         depends_on:
             - db
         networks:
-            - projectNetwork
+            - project_network
 
     db:
         image: mysql:8
@@ -31,13 +31,13 @@ services:
         ports:
             - "3306:3306"
         volumes:
-            - db-volume:/var/lib/mysql
+            - db_volume:/var/lib/mysql
             - ./db:/docker-entrypoint-initdb.d
         networks:
-            - projectNetwork
+            - project_network
 
 volumes:
-    db-volume:
+    db_volume:
 networks:
-    projectNetwork:
+    project_network:
         driver: bridge
