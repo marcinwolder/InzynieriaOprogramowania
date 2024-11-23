@@ -40,7 +40,7 @@ export default function Navbar() {
                     <a>Strona główna</a>
                     </li>
                     <li>
-                    <a>Sklep</a>
+                    <Link to="/sklep">Sklep</Link>
                     </li>
                     <li>
                     <a>O nas</a>
