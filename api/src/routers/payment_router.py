@@ -1,21 +1,20 @@
 import datetime
-import uuid
-from dateutil.relativedelta import relativedelta
 import os
-from typing import Annotated
-from fastapi import APIRouter, Depends, status
-from pydantic import BaseModel
+import uuid
 
+import stripe
+from dateutil.relativedelta import relativedelta
+from fastapi import APIRouter, status
+from pydantic import BaseModel
 from sql.models import Order, OrderStatus
+from sqlalchemy import create_engine, select
+from sqlalchemy.orm import Session
 from utils.responses import PaymentRequiredResponse, StandardResponse
 
 # TODO: engine as dependency
-from sqlalchemy import create_engine, select
-from sqlalchemy.orm import Session
 engine = create_engine("mysql+pymysql://root:root_password@db:3306/playgrid", echo=True) #TODO: Change DB passwords from default, and add to .env
 
 # TODO: stripe as dependency
-import stripe
 stripe.api_key = os.environ["STRIPE_SECRET_KEY"]
 BASE_URL = os.environ["BASE_URL"]
 
@@ -42,9 +41,9 @@ def generate_payment_session(serverId: str) -> GeneratePaymentResponse:
 
     session = stripe.checkout.Session.create(
       success_url=f"{BASE_URL}/redirect/{order_id}",
-      cancel_url=f"{BASE_URL}/",
+      cancel_url=f"{BASE_URL}/", #TODO: ADD cancel url + manage cancel in second endpoint
       currency='pln',
-      line_items=[{"price": "price_1QNfT2DY0D7JFcFXZQPMzYGx", "quantity": 1}],
+      line_items=[{"price": "price_1QNfT2DY0D7JFcFXZQPMzYGx", "quantity": 1}], #TODO: Get item from request
       mode="payment"
     )
 
@@ -53,7 +52,8 @@ def generate_payment_session(serverId: str) -> GeneratePaymentResponse:
         'paymentURL': session.url
     }
 
-
+# TODO: Manage canceled payment in endpoint
+# TODO: Add AWS integration (webhook lambda + simple db in the cloud)
 @PaymentRouter.get('/redirect/{orderUuid}', responses={
     status.HTTP_402_PAYMENT_REQUIRED: {'model': PaymentRequiredResponse}
 })
