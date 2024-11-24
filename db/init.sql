@@ -33,7 +33,7 @@ CREATE TABLE
         user_id INT AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(30) NOT NULL,
         email VARCHAR(50) NOT NULL,
-        password VARCHAR(50) NOT NULL,
+        password VARCHAR(30) NOT NULL,
         registration_date DATE NOT NULL,
         recovery_hash VARCHAR(32)
     );
@@ -69,7 +69,7 @@ VALUES
 -- TABLE: orders
 CREATE TABLE
     IF NOT EXISTS orders (
-        order_id INT AUTO_INCREMENT PRIMARY KEY,
+        order_uuid VARCHAR(36) PRIMARY KEY NOT NULL,
         user_id INT NOT NULL,
         server_id INT NOT NULL,
         purchase_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

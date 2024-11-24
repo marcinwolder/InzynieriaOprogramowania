@@ -1,6 +1,4 @@
-from typing import List
 from fastapi import FastAPI
-from pydantic import BaseModel
 
 from src.routers.auth_router import AuthRouter
 from src.routers.server_router import ServerRouter
