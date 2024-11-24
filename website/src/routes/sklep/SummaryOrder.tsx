@@ -12,7 +12,7 @@ interface SummaryProps {
   onVersionChange: (version: string) => void;
 }
 
-const SummaryOrder: React.FC<SummaryProps> = ({ serverName, selectedPlan, selectedGame, selectedVersion, onVersionChange}) => {
+const SummaryOrder: React.FC<SummaryProps> = ({ serverName, selectedPlan, selectedGame, selectedVersion}) => {
   const plan = plans[selectedPlan];
     
     if (!plan) {

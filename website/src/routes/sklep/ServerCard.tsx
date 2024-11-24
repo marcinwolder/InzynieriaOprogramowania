@@ -33,7 +33,7 @@ const ServerCard: React.FC<ServerCardProps> = ({
       };
   return (
         <div className="h-full w-1/5 gap-4"> 
-            <div tabIndex={0} className={clsx("collapse collapse-open border cursor-pointer", {"border-base-300": !isSelected, "border-blue-500": isSelected})}>
+            <div tabIndex={0} className={clsx("collapse collapse-open border cursor-pointer", {"border-base-300": !isSelected, "border-accent": isSelected})}>
                 <div className="collapse-content">
                     <div className="overflow-x-auto">
                         <table className="table text-center">
