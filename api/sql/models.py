@@ -43,12 +43,12 @@ class Server(Base):
     plan_id: Mapped[int] = mapped_column(ForeignKey('plans.plan_id'))
 
 class OrderStatus(enum.Enum):
-    PENDING = 'pending'
-    SUCCESSFUL = 'successful'
-    CANCELLED = 'cancelled'
+    pending = 'pending'
+    successful = 'successful'
+    cancelled = 'cancelled'
 class Order(Base):
     __tablename__ = 'orders'
-    order_id: Mapped[int] = mapped_column(primary_key=True)
+    order_uuid: Mapped[str] = mapped_column(String(36), primary_key=True, autoincrement=False)
     user_id: Mapped[int] = mapped_column(ForeignKey('users.user_id'))
     server_id: Mapped[int] = mapped_column(ForeignKey('servers.server_id'))
     purchase_date: Mapped[datetime.datetime] = mapped_column(TIMESTAMP(), server_default=func.now())

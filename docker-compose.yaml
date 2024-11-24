@@ -20,6 +20,8 @@ services:
             - db
         networks:
             - project_network
+        env_file:
+            - path: "./.env"
 
     db:
         image: mysql:8
