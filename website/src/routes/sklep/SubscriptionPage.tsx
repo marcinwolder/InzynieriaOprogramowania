@@ -1,8 +1,16 @@
 import ServerCard from "./ServerCard";
+import React, { useState } from 'react';
 
-const SubscriptionsPage = () => {
-  const handleServerSelect = (serverType: String) => {
-    alert(`You selected the ${serverType} server!`);
+interface SubscriptionsPageProps {
+    onPlanSelected: (plan: string) => void;
+  }
+
+const SubscriptionsPage: React.FC<SubscriptionsPageProps> = ( {onPlanSelected} ) => {
+    const [selectedServer, setSelectedServer] = useState<string | null>(null);
+
+    const handleServerSelect = (serverType: string) => {
+        onPlanSelected(serverType);
+        setSelectedServer(serverType);
 };
 
   return (
@@ -48,9 +56,9 @@ const SubscriptionsPage = () => {
                 storage="20 GB"
                 slots="max. 5"
                 duration="2 tyg."
-                location="Europe"
-                onClick={() => handleServerSelect("Lite")}
-                />
+                location="Europa"
+                selectedServer={selectedServer}
+                onServerSelect={handleServerSelect}/>
                 {/* Standard Server */}
                 <ServerCard
                 title="Standard"
@@ -59,9 +67,9 @@ const SubscriptionsPage = () => {
                 storage="36 GB"
                 slots="max. 10"
                 duration="2 tyg."
-                location="Europe"
-                onClick={() => handleServerSelect("Standard")}
-                />
+                location="Europa"
+                selectedServer={selectedServer}
+                onServerSelect={handleServerSelect}/>
                 {/* Premium Server */}
                 <ServerCard
                 title="Premium"
@@ -70,9 +78,9 @@ const SubscriptionsPage = () => {
                 storage="64 GB"
                 slots="no limit!"
                 duration="1 mies."
-                location="Europe"
-                onClick={() => handleServerSelect("Premium")}
-                />
+                location="Europa"
+                selectedServer={selectedServer}
+                onServerSelect={handleServerSelect}/>
                 {/* Individual Server */}
                 <ServerCard
                 title="Individual"
@@ -82,8 +90,8 @@ const SubscriptionsPage = () => {
                 slots="no limit!"
                 duration="1 mies."
                 location="Europa"
-                onClick={() => handleServerSelect("Individual")}
-                /> 
+                selectedServer={selectedServer}
+                onServerSelect={handleServerSelect}/>
         </div>
     </div>
 );

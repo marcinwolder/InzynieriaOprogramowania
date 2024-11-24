@@ -1,15 +1,17 @@
 import React from 'react';
 
 interface SummaryElements {
+    selectedPlan: string;
     user_id : string;
-    plan_id : string;
     server_name : string;
+    game_id : string
 }
 
 const SummaryOrder: React.FC<SummaryElements> = ({
+    selectedPlan,
     user_id,
-    plan_id,
-    server_name
+    server_name,
+    game_id
 }) => {
     return (
         <div className="overflow-x-auto">
@@ -28,7 +30,11 @@ const SummaryOrder: React.FC<SummaryElements> = ({
             </tr>
             <tr>
               <td>Plan</td>
-              <th>{plan_id}</th>
+              <th>{selectedPlan}</th>
+            </tr>
+            <tr>
+              <td>Gra</td>
+              <th>{game_id}</th>
             </tr>
             <tr>
             <td>Nazwa serwera</td>

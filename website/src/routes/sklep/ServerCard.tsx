@@ -1,6 +1,7 @@
 import React from 'react';
-import { SlArrowDown } from "react-icons/sl";
-
+import { GoChevronDown } from "react-icons/go";
+import clsx from "clsx";
+import { GoCheck } from "react-icons/go";
 
 interface ServerCardProps {
   title: string;
@@ -10,7 +11,8 @@ interface ServerCardProps {
   slots: string;
   duration: string;
   location: string;
-  onClick: () => void;
+  selectedServer: string | null;
+  onServerSelect: (serverType: string) => void;
 }
 
 const ServerCard: React.FC<ServerCardProps> = ({
@@ -21,11 +23,16 @@ const ServerCard: React.FC<ServerCardProps> = ({
   slots,
   duration,
   location,
-  onClick,
+  selectedServer,
+  onServerSelect,
 }) => {
+    const isSelected = selectedServer === title;
+    const handleSelect = () => {
+        onServerSelect(title);
+      };
   return (
         <div className="h-full w-1/5 gap-4"> 
-            <div tabIndex={0} className="collapse collapse-open border border-base-300 cursor-pointer">
+            <div tabIndex={0} className={clsx("collapse collapse-open border cursor-pointer", {"border-base-300": !isSelected, "border-blue-500": isSelected})}>
                 <div className="collapse-content">
                     <div className="overflow-x-auto">
                         <table className="table text-center">
@@ -55,7 +62,7 @@ const ServerCard: React.FC<ServerCardProps> = ({
                         </table>
                     </div>
                 <div className="flex justify-center">
-                    <button className="btn btn-ghost" onClick={onClick}><SlArrowDown /></button>
+                    <button className="btn btn-ghost btn-lg" onClick={handleSelect}>  {isSelected ? <GoCheck /> : <GoChevronDown />} </button>
                 </div>
             </div>
         </div> 

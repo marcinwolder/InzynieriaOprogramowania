@@ -1,7 +1,12 @@
 import React from 'react';
 import SummaryTable from './SummaryTable';
 
-const SummaryOrder = () => {
+interface SummaryProps {
+  serverName: string;
+  selectedPlan: string;
+}
+
+const SummaryOrder: React.FC<SummaryProps> = ({ serverName, selectedPlan }) => {
     return (
         <div className="flex h-screen items-center justify-center">
         <div className="h-5/6 w-2/3 grid grid-rows-12 grid-cols-2 gap-x-16 gap-y-4">
@@ -10,8 +15,10 @@ const SummaryOrder = () => {
           </div>
           <div className="row-span-8 col-span-1 h-full w-full"> 
             <SummaryTable user_id="MarcinWolder"
-            plan_id="Lite"
-            server_name="example"/>
+            selectedPlan={selectedPlan}
+            server_name={serverName}
+            game_id="minecraft"
+            />
           </div>
   
           <div className="row-span-10 col-span-1 bg-base"></div>
