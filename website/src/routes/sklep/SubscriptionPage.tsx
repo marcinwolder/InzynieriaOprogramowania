@@ -33,7 +33,7 @@ const SubscriptionsPage: React.FC<SubscriptionsPageProps> = ( {onPlanSelected} )
                                 <td>Procesor</td>
                             </tr>
                             <tr>
-                                <td>RAM</td>
+                                <td>RAM DDR5</td>
                             </tr>
                             <tr>
                                 <td>Dysk SSD</td>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoChevronDown } from "react-icons/go";
+import { GoArrowDown } from "react-icons/go";
 import clsx from "clsx";
 import { GoCheck } from "react-icons/go";
 import plans from './Plans.tsx';
@@ -63,7 +63,7 @@ const ServerCard: React.FC<ServerCardProps> = ({
                         </table>
                     </div>
                 <div className="flex justify-center">
-                    <button className="btn btn-ghost btn-lg" onClick={handleSelect}>  {isSelected ? <GoCheck /> : <GoChevronDown />} </button>
+                    <button className="btn btn-ghost btn-lg" onClick={handleSelect}>  {isSelected ? <GoCheck /> : <GoArrowDown />} </button>
                 </div>
             </div>
         </div> 

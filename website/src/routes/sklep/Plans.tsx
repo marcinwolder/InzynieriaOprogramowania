@@ -4,18 +4,18 @@ const plans = {
         cpu:"1 x 3.6 GHz",
         ram:"4 GB",
         storage:"20 GB",
-        slots:"max. 5",
-        duration:"2 tyg.",
+        slots:"no limit!",
+        duration:"1 mies.",
         location:"Europa",
         price: "30.00"
 },
     Standard: {
         title:"Standard",
-        cpu:"3 x 3.6 GHz",
+        cpu:"4 x 3.6 GHz",
         ram:"8 GB",
         storage:"36 GB",
-        slots:"max. 10",
-        duration:"2 tyg.",
+        slots:"no limit!",
+        duration:"1 mies.",
         location:"Europa",
         price: "60.00"
     },
@@ -25,7 +25,7 @@ const plans = {
         ram:"16 GB",
         storage:"64 GB",
         slots:"no limit!",
-        duration:"1 mies.",
+        duration:"2 mies.",
         location:"Europa",
         price: "90.00"
     },
@@ -35,7 +35,7 @@ const plans = {
         ram:"max. 32 GB",
         storage:"max. 126 GB",
         slots:"no limit!",
-        duration:"1 mies.",
+        duration:"2 mies.",
         location:"Europa",
         price: "not available yet"
     } 
