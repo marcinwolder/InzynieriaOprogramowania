@@ -2,33 +2,34 @@ import React from 'react';
 import { GoChevronDown } from "react-icons/go";
 import clsx from "clsx";
 import { GoCheck } from "react-icons/go";
+import plans from './Plans.tsx';
+
+type PlanType = keyof typeof plans;
+
+interface PlanDetails {
+    title: string;
+    cpu: string;
+    ram: string;
+    storage: string;
+    slots: string;
+    duration: string;
+    location: string;
+  }
 
 interface ServerCardProps {
-  title: string;
-  cpu: string;
-  ram: string;
-  storage: string;
-  slots: string;
-  duration: string;
-  location: string;
-  selectedServer: string | null;
-  onServerSelect: (serverType: string) => void;
-}
+    planDetails: PlanDetails;
+    selectedServer: string | null;
+    onServerSelect: (serverType: PlanType) => void;
+    }
 
 const ServerCard: React.FC<ServerCardProps> = ({
-  title,
-  cpu,
-  ram,
-  storage,
-  slots,
-  duration,
-  location,
+  planDetails,
   selectedServer,
   onServerSelect,
 }) => {
-    const isSelected = selectedServer === title;
+    const isSelected = selectedServer === planDetails.title;
     const handleSelect = () => {
-        onServerSelect(title);
+        onServerSelect(planDetails.title as PlanType);
       };
   return (
         <div className="h-full w-1/5 gap-4"> 
@@ -38,25 +39,25 @@ const ServerCard: React.FC<ServerCardProps> = ({
                         <table className="table text-center">
                             <tbody>
                                 <tr>
-                                    <th className="text-2xl">{title}</th>
+                                    <th className="text-2xl">{planDetails.title}</th>
                                 </tr>
                                 <tr>
-                                    <td>{cpu}</td>
+                                    <td>{planDetails.cpu}</td>
                                 </tr>
                                 <tr>
-                                    <td>{ram}</td>
+                                    <td>{planDetails.ram}</td>
                                 </tr>
                                 <tr>
-                                    <td>{storage}</td>
+                                    <td>{planDetails.storage}</td>
                                 </tr>
                                 <tr>
-                                    <td>{slots}</td>
+                                    <td>{planDetails.slots}</td>
                                 </tr>
                                 <tr>
-                                    <td>{duration}</td>
+                                    <td>{planDetails.duration}</td>
                                 </tr>
                                 <tr>
-                                    <td>{location}</td>
+                                    <td>{planDetails.location}</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -1,14 +1,17 @@
 import ServerCard from "./ServerCard";
 import React, { useState } from 'react';
+import plans from "./Plans";
+
+type PlanType = keyof typeof plans;
 
 interface SubscriptionsPageProps {
-    onPlanSelected: (plan: string) => void;
+    onPlanSelected: (plan: PlanType) => void;
   }
 
 const SubscriptionsPage: React.FC<SubscriptionsPageProps> = ( {onPlanSelected} ) => {
     const [selectedServer, setSelectedServer] = useState<string | null>(null);
 
-    const handleServerSelect = (serverType: string) => {
+    const handleServerSelect = (serverType: PlanType) => {
         onPlanSelected(serverType);
         setSelectedServer(serverType);
 };
@@ -50,46 +53,22 @@ const SubscriptionsPage: React.FC<SubscriptionsPageProps> = ( {onPlanSelected} )
             </div>
                 {/* Lite Server */}
                 <ServerCard
-                title="Lite"
-                cpu="1 x 3.6 GHz"
-                ram="4 GB"
-                storage="20 GB"
-                slots="max. 5"
-                duration="2 tyg."
-                location="Europa"
+                planDetails={plans.Lite}
                 selectedServer={selectedServer}
                 onServerSelect={handleServerSelect}/>
                 {/* Standard Server */}
                 <ServerCard
-                title="Standard"
-                cpu="3 x 3.6 GHz"
-                ram="8 GB"
-                storage="36 GB"
-                slots="max. 10"
-                duration="2 tyg."
-                location="Europa"
+                planDetails={plans.Standard}
                 selectedServer={selectedServer}
                 onServerSelect={handleServerSelect}/>
                 {/* Premium Server */}
                 <ServerCard
-                title="Premium"
-                cpu="6 x 3.6 GHz"
-                ram="16 GB"
-                storage="64 GB"
-                slots="no limit!"
-                duration="1 mies."
-                location="Europa"
+                planDetails={plans.Premium}
                 selectedServer={selectedServer}
                 onServerSelect={handleServerSelect}/>
                 {/* Individual Server */}
                 <ServerCard
-                title="Individual"
-                cpu="max. 10 x 3.6 GHz"
-                ram="max. 32 GB"
-                storage="max. 126 GB"
-                slots="no limit!"
-                duration="1 mies."
-                location="Europa"
+                planDetails={plans.Individual}
                 selectedServer={selectedServer}
                 onServerSelect={handleServerSelect}/>
         </div>
