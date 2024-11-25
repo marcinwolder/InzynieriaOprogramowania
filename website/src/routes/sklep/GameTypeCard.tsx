@@ -24,10 +24,10 @@ const GameTypeCard: React.FC<Game> = ({
     <button 
       onClick={handleGameChange} 
       className={clsx(
-        "card bg-base-100 w-1/5 transform transition-transform duration-200",
+        "card w-1/5 transform transition-transform duration-200",
         {
           "shadow-xl scale-105 bg-accent": selectedGame,
-          "shadow-inner scale-100": !selectedGame,
+          "shadow-inner scale-100  bg-base-100 ": !selectedGame,
         },
         "hover:scale-105 hover:shadow-lg",
         "h-full"
