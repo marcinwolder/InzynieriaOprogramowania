@@ -30,7 +30,7 @@ const GameTypeCard: React.FC<Game> = ({
           "shadow-inner scale-100": !selectedGame,
         },
         "hover:scale-105 hover:shadow-lg",
-        "h-full" // Karta zajmuje 90% wysokości ekranu
+        "h-full"
       )}>
       <figure className="px-2 py-2 flex items-center justify-center">
         <img

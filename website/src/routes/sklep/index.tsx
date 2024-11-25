@@ -1,6 +1,5 @@
 import { useState } from "react";
 import SubscriptionsPage from "./SubscriptionPage";
-import CustomizeServer from "./CustomizeServer";
 import SummaryOrder from "./SummaryOrder";
 import plans from './Plans.tsx';
 import CustomizeServerVer2 from "./CustiomizeServerVer2.tsx";
