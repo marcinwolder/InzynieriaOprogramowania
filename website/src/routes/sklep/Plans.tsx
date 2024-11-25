@@ -32,12 +32,12 @@ const plans = {
     Individual: {
         title:"Individual",
         cpu:"max. 10 x 3.6 GHz",
-        ram:"max. 32 GB",
+        ram:"max. 64 GB",
         storage:"max. 126 GB",
         slots:"no limit!",
         duration:"2 mies.",
         location:"Europa",
-        price: "not available yet"
+        price: "500"
     } 
   };
 

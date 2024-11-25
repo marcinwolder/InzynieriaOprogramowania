@@ -54,7 +54,6 @@ export default function Sklep() {
         onVersionChange={handleVersionChange}
         selectedPlan={selectedPlan as PlanType}
         onServerNameChange={handleServerNameChange}
-        selectedGame={selectedGame}
         onGameChange={handleGameChange}
         onSummaryClick={handleSummaryClick}
       />

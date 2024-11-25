@@ -1,6 +1,7 @@
 import React from 'react';
 import SummaryTable from './SummaryTable';
 import plans from './Plans.tsx';
+import SummaryIndividualTable from './SummaryIndividualTable.tsx';
 
 type PlanType = keyof typeof plans;
 
@@ -25,13 +26,21 @@ const SummaryOrder: React.FC<SummaryProps> = ({ serverName, selectedPlan, select
           <div className="row-span-2 col-span-2 h-full w-full">
             <h1 className="text-2xl my-6">Podsumowanie:</h1>
           </div>
-          <div className="row-span-8 col-span-1 h-full w-full"> 
-            <SummaryTable user_id="MarcinWolder"
+          <div className="row-span-8 col-span-1 h-full w-full">
+            {selectedPlan === "Individual" ?
+            <SummaryIndividualTable user_id="MarcinWolder"
             selectedPlan={selectedPlan}
             server_name={serverName}
             game_id={selectedGame}
             game_version={selectedVersion}
             />
+            :
+            <SummaryTable user_id="MarcinWolder"
+            selectedPlan={selectedPlan}
+            server_name={serverName}
+            game_id={selectedGame}
+            game_version={selectedVersion}
+            />}
           </div>
   
           <div className="row-span-10 col-span-1 bg-base"></div>

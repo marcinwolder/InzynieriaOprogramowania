@@ -11,7 +11,6 @@ interface CustomizeServerProps {
   showSummary: boolean;
   selectedVersion: string;
   selectedPlan: PlanType;
-  selectedGame: string;
   onServerNameChange: (name: string) => void;
   onGameChange: (gameId: string) => void;
   onVersionChange: (gameVersion: string) => void;
@@ -91,13 +90,13 @@ const CustomizeServer: React.FC<CustomizeServerProps> = ({
             <GameTypeCard
               title="Minecraft"
               img={minecraftSrc}
-              game_id={selectedVersion}
+              game_id={selectedGame}
               onGameChange={handleSelectedGame}
             />
             <GameTypeCard
               title="Fortnite"
               img={fortniteSrc}
-              game_id={selectedVersion}
+              game_id={selectedGame}
               onGameChange={handleSelectedGame}
             />
           </div>

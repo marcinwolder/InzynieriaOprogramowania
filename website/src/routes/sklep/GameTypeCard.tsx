@@ -16,6 +16,10 @@ const GameTypeCard: React.FC<Game> = ({
 }) => {
   const selectedGame = game_id === title;
 
+  if (selectedGame) {
+    console.log(title);
+  }
+
   const handleGameChange = () => {
     onGameChange(title);
   };
@@ -24,8 +28,8 @@ const GameTypeCard: React.FC<Game> = ({
     <button 
       onClick={handleGameChange} 
       className={clsx(
-        "card bg-base-100 w-52 mx-auto my-auto transform transition-transform duration-200",
-        {"shadow-xl scale-105 shadow-accent": selectedGame, "shadow-inner scale-100": !selectedGame },
+        "card bg-base-100 w-48 mx-auto my-auto transform transition-transform duration-200",
+        {"shadow-xl scale-105 bg-accent": selectedGame, "shadow-inner scale-100": !selectedGame },
         "hover:scale-105 hover:shadow-lg"
       )}
     >
