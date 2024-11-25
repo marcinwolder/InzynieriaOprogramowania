@@ -1,1 +1,0 @@
-{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/navbar/index.tsx","./src/routes/main/offertable.d.ts","./src/routes/main/typewriter.tsx","./src/routes/main/index.tsx","./src/routes/panel/serverpanel.tsx","./src/routes/panel/index.tsx","./src/routes/sklep/index.tsx","./src/utils/asyncutils.ts"],"version":"5.6.3"}

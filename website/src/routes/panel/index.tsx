@@ -12,7 +12,7 @@ export default function Panel() {
     const [loading, setLoading] = useState<boolean>(true)
     useEffect(()=>{
         (async ()=>{
-            await sleep(2500)
+            await sleep(1000)
             setLoading(false)
         })()
     }, [])
