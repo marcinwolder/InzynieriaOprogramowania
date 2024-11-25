@@ -2,7 +2,6 @@ from typing import Annotated, Any, Dict
 from fastapi import APIRouter, Depends, Header, status
 from pydantic import BaseModel
 
-from utils.dependencies import User, get_current_user
 from utils.responses import *
 
 ServerRouter = APIRouter(prefix='/server')
@@ -15,7 +14,7 @@ class PullConfigResponse(BaseModel):
     status.HTTP_402_PAYMENT_REQUIRED: {'model': PaymentRequiredResponse},
     status.HTTP_400_BAD_REQUEST: {'model': BadRequestResponse}
 })
-def pull_server_config(serverId: str, current_user: Annotated[User | None, Depends(get_current_user)]) -> PullConfigResponse:
+def pull_server_config(serverId: str) -> PullConfigResponse:
     return {
         'msg': 'Server config downloaded',
         'config': {}
@@ -28,7 +27,7 @@ class PushConfigBody(BaseModel):
     status.HTTP_402_PAYMENT_REQUIRED: {'model': PaymentRequiredResponse},
     status.HTTP_400_BAD_REQUEST: {'model': BadRequestResponse}
 })
-def push_server_config(serverId: str, body: PushConfigBody, current_user: Annotated[User | None, Depends(get_current_user)]) -> StandardResponse:
+def push_server_config(serverId: str, body: PushConfigBody) -> StandardResponse:
     return {
         'msg': 'Server config updated'
     }
@@ -39,13 +38,13 @@ class CreateServerBody(BaseModel):
     config: Dict[str, Any]
 class CreateServerResponse(BaseModel):
     msg: str
-    serverId = int
+    serverId: int
 @ServerRouter.put('/', responses={
     status.HTTP_401_UNAUTHORIZED: {'model': NotAuthorizedResponse},
     status.HTTP_402_PAYMENT_REQUIRED: {'model': PaymentRequiredResponse},
     status.HTTP_400_BAD_REQUEST: {'model': BadRequestResponse}
 })
-def create_new_server(body: CreateServerBody, current_user: Annotated[User | None, Depends(get_current_user)]) -> StandardResponse:
+def create_new_server(body: CreateServerBody) -> StandardResponse:
     return {
         'msg': 'Server created'
     }
@@ -54,7 +53,7 @@ def create_new_server(body: CreateServerBody, current_user: Annotated[User | Non
     status.HTTP_401_UNAUTHORIZED: {'model': NotAuthorizedResponse},
     status.HTTP_400_BAD_REQUEST: {'model': BadRequestResponse}
 })
-def delete_server(serverId: str, current_user: Annotated[User | None, Depends(get_current_user)]) -> StandardResponse:
+def delete_server(serverId: str) -> StandardResponse:
     return {
         'msg': 'Server deleted'
     }
