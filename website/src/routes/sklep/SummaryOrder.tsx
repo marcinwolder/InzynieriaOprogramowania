@@ -29,8 +29,6 @@ const SummaryOrder: React.FC<SummaryProps> = ({ serverName, selectedPlan, select
     };
 
 
-    const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
     const validateForm = () => {
       if (!serverName) return "Proszę podać nazwę serwera.";
       if (serverName.length < 6 || serverName.length > 15)
@@ -49,8 +47,6 @@ const SummaryOrder: React.FC<SummaryProps> = ({ serverName, selectedPlan, select
         alert(validationError);
         return;
       }
-  
-      setErrorMessage(null);
   
       const orderData = {
         name: "MarcinWolder",

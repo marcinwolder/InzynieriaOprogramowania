@@ -2,7 +2,8 @@ import { useState } from "react";
 import SubscriptionsPage from "./SubscriptionPage";
 import SummaryOrder from "./SummaryOrder";
 import plans from './Plans.tsx';
-import CustomizeServerVer2 from "./CustiomizeServerVer2.tsx";
+import { sleep } from "../../utils/asyncUtils.ts";
+import CustomizeServer from "./CustomizeServer.tsx";
 
 type PlanType = keyof typeof plans;
 
@@ -12,57 +13,39 @@ export default function Sklep() {
   const [selectedGame, setSelectedGame] = useState('nie wybrano');
   const [gameVersion, setGameVersion] = useState('nie wybrano');
   const [showSummary, setShowSummary] = useState(false);
-  const [scrollDown, setScrollDown] = useState(false);
 
-  const handlePlanSelect = async (plan: PlanType) => {
-    setSelectedPlan(plan);
-    await new Promise(resolve => setTimeout(resolve, 200));
-    setScrollDown(true);
+  const sleepAndScroll = async (h: number) => {
+    await sleep(200);
     window.scrollTo({
-    top: window.innerHeight,
-    behavior: 'smooth',
-  });
-  };
-
-  const handleServerNameChange = (name: string) => {
-    setServerName(name);
-  };
-
-  const handleGameChange = (gameId: string) => {
-    setSelectedGame(gameId);
-  };
-
-  const handleVersionChange = (version: string) => {
-    setGameVersion(version);
-  };
-
-  const handleSummaryClick = async () => {
-    setShowSummary(true);
-    await new Promise(resolve => setTimeout(resolve, 200));
-    window.scrollTo({
-      top: document.body.scrollHeight,
+      top: h,
       behavior: 'smooth',
     });
   };
 
   return (
     <div>
-      <SubscriptionsPage onPlanSelected={handlePlanSelect} />
-      <CustomizeServerVer2
+      <SubscriptionsPage onPlanSelected={(plan: PlanType)=>{
+        setSelectedPlan(plan);
+        sleepAndScroll(window.innerHeight)
+      }} />
+      <CustomizeServer
         showSummary={showSummary}
         selectedVersion={gameVersion}
-        onVersionChange={handleVersionChange}
+        onVersionChange={setGameVersion}
         selectedPlan={selectedPlan as PlanType}
-        onServerNameChange={handleServerNameChange}
-        onGameChange={handleGameChange}
-        onSummaryClick={handleSummaryClick}
+        onServerNameChange={setServerName}
+        onGameChange={setSelectedGame}
+        onSummaryClick={()=>{
+          setShowSummary(true);
+          sleepAndScroll(document.body.scrollHeight)
+        }}
       />
       {showSummary && (
         <SummaryOrder
           serverName={serverName} 
           selectedPlan={selectedPlan as PlanType} 
           selectedGame={selectedGame}
-          onVersionChange={handleVersionChange}
+          onVersionChange={setGameVersion}
           selectedVersion={gameVersion}
         />
       )}

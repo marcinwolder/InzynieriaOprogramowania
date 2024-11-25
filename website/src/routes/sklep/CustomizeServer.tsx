@@ -23,7 +23,6 @@ const CustomizeServer: React.FC<CustomizeServerProps> = ({
   const [selectedGame, setSelectedGame] = useState<string | null>(null);
   const [serverName, setServerName] = useState<string>(''); 
   const [validationMessage, setValidationMessage] = useState<string>('');
-  const [selectedVersion, setGameVersion] = useState<string>('');
 
   const handleSelectedGame = (gameId: string) => {
     setSelectedGame(gameId);
@@ -36,7 +35,6 @@ const CustomizeServer: React.FC<CustomizeServerProps> = ({
     const value = event.target.value;
     if (value.length < 6 || value.length > 15) {
       setValidationMessage('Nazwa serwera musi mieć od 6 do 15 znaków.');
-
     } else if (!/^[a-zA-Z0-9.]+$/.test(value)) {
       setValidationMessage('Nazwa serwera może zawierać tylko litery, cyfry i kropki.');
     } else {
@@ -45,7 +43,6 @@ const CustomizeServer: React.FC<CustomizeServerProps> = ({
   };
 
   const handleVersionChange = (version: string) => {
-    setGameVersion(version);
     onVersionChange(version);
   };
 
@@ -56,16 +53,40 @@ const CustomizeServer: React.FC<CustomizeServerProps> = ({
 
   return (
     <div className="flex h-screen items-center justify-center">
-      <div className="h-5/6 w-2/3 grid grid-rows-12 grid-cols-4 gap-x-16 gap-y-4">
-        <div className="row-span-1 col-span-4">
-          <h1 className="text-left text-2xl mx-2 mb-6">
-            Plan: <span className="font-bold">{selectedPlan}</span>
+      <div className="h-5/6 w-3/5 grid grid-rows-8 grid-cols-2 gap-x-4 gap-y-4">
+        <div className="row-span-1 col-span-1 mt-8">
+          <h1 className="text-left text-2xl mx-16 ">
+            Plan:
           </h1>
         </div>
 
+        <div className="row-span-1 col-span-1 mt-8">
+            <h1 className="text-left text-2xl mx-2 ">
+            <span className="font-bold">{selectedPlan}</span>
+          </h1>
+        </div>
+
+        <div className="row-span-1 col-span-2 mb-auto ">
+        <div className="overflow-x-auto">
+            <table className="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+            </table>
+            </div>
+        </div>
+
         {/* Nazwa serwera */}
-        <div className="row-span-4 col-span-2">
-          <h2 className="text-2xl mx-2 my-8">Nazwij serwer: </h2>
+        <div className="row-span-1 col-span-1 my-auto ">
+          <h2 className="text-xl mx-16 mb-8">Nazwij serwer: </h2>
+        </div>
+
+        <div className="row-span-1 col-span-1 my-auto ">
           <label className="form-control w-full max-w-xs">
             <input
               type="text"
@@ -81,12 +102,12 @@ const CustomizeServer: React.FC<CustomizeServerProps> = ({
         </div>
 
         {/* Wybór gry */}
-        <div className="row-span-1 col-span-2">
-          <h2 className="text-2xl mx-4 my-4">Wybierz grę: </h2>
+        <div className="row-span-2 col-span-1 my-auto">
+          <h2 className="text-xl mx-16">Wybierz grę: </h2>
         </div>
 
-        <div className="row-span-7 col-span-2">
-          <div className="flex gap-4 mt-8 items-center">
+        <div className="row-span-2 col-span-1 my-auto ">
+          <div className="flex gap-4">
             <GameTypeCard
               title="Minecraft"
               img={minecraftSrc}
@@ -103,11 +124,15 @@ const CustomizeServer: React.FC<CustomizeServerProps> = ({
         </div>
 
         {/* Wybór wersji */}
-        <div className="row-span-4 col-span-2 my-4">
+        <div className="row-span-1 col-span-1 my-auto">
+          <h2 className="text-xl mx-16">Wybierz wersję: </h2>
+        </div>
+
+        <div className="row-span-1 col-span-1 my-auto">
           <SelectVersion onVersionChange={handleVersionChange} />
         </div>
 
-        <div className="row-span-2 col-span-2 my-auto">
+        <div className="row-span-2 col-span-2 my-auto ml-auto">
           <button className="btn btn-outline btn-accent" onClick={onSummaryClick}>Podsumowanie</button>
         </div>
       </div>
