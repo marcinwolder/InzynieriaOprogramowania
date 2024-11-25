@@ -99,7 +99,7 @@ const CustomizeServerVer2: React.FC<CustomizeServerProps> = ({
               onChange={handleInputChange}
             />
             <div className="label">
-              <span className="label-text-alt text-red-5">{validationMessage}</span>
+              <span className="label-text-alt text-red-500">{validationMessage}</span>
             </div>
           </label>
         </div>
