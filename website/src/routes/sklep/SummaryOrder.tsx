@@ -20,6 +20,15 @@ const SummaryOrder: React.FC<SummaryProps> = ({ serverName, selectedPlan, select
         return <div></div>;
     }
 
+    const [individualConfig, setIndividualConfig] = useState<Record<string, string | number>>({});
+
+    const handleConfigurationChange = (
+      config: Record<string, string | number> | ((prevConfig: Record<string, string | number>) => Record<string, string | number>)
+    ) => {
+      setIndividualConfig(config);
+    };
+
+
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     const validateForm = () => {
@@ -28,8 +37,8 @@ const SummaryOrder: React.FC<SummaryProps> = ({ serverName, selectedPlan, select
         return "Nazwa serwera musi mieć od 6 do 15 znaków.";
       if (!/^[a-zA-Z0-9.]+$/.test(serverName))
         return "Nazwa serwera może zawierać tylko litery, cyfry i kropki.";
-      if (!selectedGame) return "Proszę wybrać grę.";
-      if (!selectedVersion) return "Proszę wybrać wersję gry.";
+      if (!selectedGame || selectedGame === 'nie wybrano') return "Proszę wybrać grę.";
+      if (!selectedVersion || selectedVersion === 'nie wybrano') return "Proszę wybrać wersję gry.";
       if (!selectedPlan) return "Proszę wybrać plan.";
       return null;
     };
@@ -44,12 +53,14 @@ const SummaryOrder: React.FC<SummaryProps> = ({ serverName, selectedPlan, select
       setErrorMessage(null);
   
       const orderData = {
-        user_id: "MarcinWolder",
-        server_name: serverName,
-        plan: selectedPlan,
-        game_id: selectedGame,
-        game_version: selectedVersion,
-        price: plans[selectedPlan].price,
+        name: "MarcinWolder",
+        gameName: selectedGame,
+        config: {
+          server_name: serverName,
+          plan: selectedPlan,
+          game_version: selectedVersion,
+          individualConfig: selectedPlan === "Individual" ? individualConfig : null,
+        }
       };
   
       console.log("Order ready for API:", orderData);
@@ -70,6 +81,7 @@ const SummaryOrder: React.FC<SummaryProps> = ({ serverName, selectedPlan, select
             server_name={serverName}
             game_id={selectedGame}
             game_version={selectedVersion}
+            onConfigChange={handleConfigurationChange}
             />
             :
             <SummaryTable user_id="MarcinWolder"

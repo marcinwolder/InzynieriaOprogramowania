@@ -9,6 +9,9 @@ interface SummaryElements {
   server_name: string;
   game_id: string;
   game_version: string;
+  onConfigChange: (
+    config: Record<string, string | number> | ((prevConfig: Record<string, string | number>) => Record<string, string | number>)
+  ) => void;
 }
 
 const SummaryIndividualTable: React.FC<SummaryElements> = ({
@@ -16,9 +19,18 @@ const SummaryIndividualTable: React.FC<SummaryElements> = ({
   user_id,
   server_name,
   game_id,
-  game_version
+  game_version,
+  onConfigChange
 }) => {
   const planDetails = plans[selectedPlan];
+
+  const handleSelectChange = (key: string, value: string | number) => {
+    onConfigChange((prevConfig: Record<string, string | number>) => ({
+      ...prevConfig,
+      [key]: value,
+    }));
+  };
+  
 
   return (
     <div className="overflow-x-auto">
@@ -56,7 +68,9 @@ const SummaryIndividualTable: React.FC<SummaryElements> = ({
               <tr>
                 <td>Procesor</td>
                 <th>
-                  <select className="select select-ghost w-full max-w-xs select-sm">
+                  <select className="select select-ghost w-full max-w-xs select-sm"
+                  defaultValue={planDetails.cpu}
+                  onChange={(e) => handleSelectChange('cpu', e.target.value)}>
                   <option disabled selected={true}>{planDetails.cpu}</option>
                     <option value='2'>2 x 3.6 GHz</option>
                     <option value='4'>4 x 3.6 GHz</option>
@@ -69,7 +83,9 @@ const SummaryIndividualTable: React.FC<SummaryElements> = ({
               <tr>
                 <td>RAM</td>
                 <th>
-                    <select className="select select-ghost w-full max-w-xs select-sm">
+                    <select className="select select-ghost w-full max-w-xs select-sm"
+                    defaultValue={planDetails.ram}
+                    onChange={(e) => handleSelectChange('ram', e.target.value)}>
                         <option disabled selected={true}>{planDetails.ram}</option>
                             <option value='4'>4 GB</option>
                             <option value='8'>8 GB</option>
@@ -82,7 +98,9 @@ const SummaryIndividualTable: React.FC<SummaryElements> = ({
               <tr>
                 <td>Dysk SSD</td>
                 <th>
-                <select className="select select-ghost w-full max-w-xs select-sm">
+                <select className="select select-ghost w-full max-w-xs select-sm"
+                defaultValue={planDetails.storage}
+                onChange={(e) => handleSelectChange('storage', e.target.value)}>
                     <option disabled selected={true}>{planDetails.storage}</option>
                         <option value='8'>8 GB</option>
                         <option value='16'>16 GB</option>
@@ -100,7 +118,9 @@ const SummaryIndividualTable: React.FC<SummaryElements> = ({
               <tr>
                 <td>Okres subskrypcji</td>
                 <th>
-                <select className="select select-ghost w-full max-w-xs select-sm">
+                <select className="select select-ghost w-full max-w-xs select-sm"
+                defaultValue={planDetails.duration}
+                onChange={(e) => handleSelectChange('duration', e.target.value)}>
                     <option disabled selected={true}>max. {planDetails.duration}</option>
                         <option value='1'>1 tyd..</option>
                         <option value='2'>2 tyg.</option>

@@ -45,19 +45,6 @@ export default function Sklep() {
     });
   };
 
-  const validateForm = () => {
-    if (!selectedPlan) return "Proszę wybrać plan.";
-    if (!selectedGame) return "Proszę wybrać grę.";
-    if (serverName.length < 6 || serverName.length > 15)
-      return "Nazwa serwera musi mieć od 6 do 15 znaków.";
-    if (!/^[a-zA-Z0-9.]+$/.test(serverName))
-      return "Nazwa serwera może zawierać tylko litery, cyfry i kropki.";
-    if (!gameVersion) return "Proszę wybrać wersję gry.";
-    return null;
-  };
-
-  
-
   return (
     <div>
       <SubscriptionsPage onPlanSelected={handlePlanSelect} />
