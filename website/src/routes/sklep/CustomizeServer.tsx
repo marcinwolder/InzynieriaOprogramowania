@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import GameTypeCard from './GameTypeCard';
 import minecraftSrc from "../../assets/server/minecraft.png";
+import fortniteSrc from "../../assets/server/fortnite.jpg";
 import SelectVersion from './SelectVersion';
 import plans from './Plans';
 
@@ -21,29 +22,35 @@ const CustomizeServer: React.FC<CustomizeServerProps> = ({
   selectedPlan, onServerNameChange, onGameChange, onVersionChange, onSummaryClick 
 }) => {
   const [selectedGame, setSelectedGame] = useState<string | null>(null);
+  const [serverName, setServerName] = useState<string>(''); 
+  const [validationMessage, setValidationMessage] = useState<string>('');
+  const [selectedVersion, setGameVersion] = useState<string>('');
 
   const handleSelectedGame = (gameId: string) => {
     setSelectedGame(gameId);
     onGameChange(gameId);
   };
 
-  const [serverName, setServerName] = useState<string>(''); 
-
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setServerName(event.target.value);
     onServerNameChange(event.target.value);
-  };
+    const value = event.target.value;
+    if (value.length < 6 || value.length > 15) {
+      setValidationMessage('Nazwa serwera musi mieć od 6 do 15 znaków.');
 
-  const [selectedVersion, setGameVersion] = useState<string>('');
+    } else if (!/^[a-zA-Z0-9.]+$/.test(value)) {
+      setValidationMessage('Nazwa serwera może zawierać tylko litery, cyfry i kropki.');
+    } else {
+      setValidationMessage('');
+    }
+  };
 
   const handleVersionChange = (version: string) => {
     setGameVersion(version);
     onVersionChange(version);
   };
 
-
   const plan = plans[selectedPlan];
-
   if (!plan) {
     return <div></div>;
   }
@@ -59,7 +66,7 @@ const CustomizeServer: React.FC<CustomizeServerProps> = ({
 
         {/* Nazwa serwera */}
         <div className="row-span-4 col-span-2">
-          <h2 className="text-2xl mx-2 my-4">Nazwij serwer: </h2>
+          <h2 className="text-2xl mx-2 my-8">Nazwij serwer: </h2>
           <label className="form-control w-full max-w-xs">
             <input
               type="text"
@@ -69,7 +76,7 @@ const CustomizeServer: React.FC<CustomizeServerProps> = ({
               onChange={handleInputChange}
             />
             <div className="label">
-              <span className="label-text-alt">min. 8 znaków</span>
+              <span className="label-text-alt text-red-500">{validationMessage}</span>
             </div>
           </label>
         </div>
@@ -84,6 +91,12 @@ const CustomizeServer: React.FC<CustomizeServerProps> = ({
             <GameTypeCard
               title="Minecraft"
               img={minecraftSrc}
+              game_id={selectedVersion}
+              onGameChange={handleSelectedGame}
+            />
+            <GameTypeCard
+              title="Fortnite"
+              img={fortniteSrc}
               game_id={selectedVersion}
               onGameChange={handleSelectedGame}
             />

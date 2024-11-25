@@ -19,7 +19,7 @@ const SelectVersion: React.FC<SelectVersionProps> = ({ onVersionChange }) => {
             <span className="label-text">Wybierz wersję:</span>
         </div>
         <select className="select select-bordered" onChange={handleChange}>
-        <option disabled selected={selectedVersion === ''}>Pick one</option>
+        <option disabled selected={selectedVersion === ''}>1...</option>
             <option>Optifine 1.21.3</option>
             <option>Optifine 1.21.1</option>
             <option>Optifine 1.21</option>

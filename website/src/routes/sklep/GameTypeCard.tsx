@@ -2,39 +2,42 @@ import React from 'react';
 import clsx from 'clsx';
 
 interface Game {
-    title : string;
-    img : string;
-    game_id : string | null,
-    onGameChange: (gameId: string) => void;
+  title: string;
+  img: string;
+  game_id: string | null;
+  onGameChange: (gameId: string) => void;
 }
 
 const GameTypeCard: React.FC<Game> = ({
-    title,
-    img,
-    game_id,
-    onGameChange
+  title,
+  img,
+  game_id,
+  onGameChange
 }) => {
-    const selectedGame = game_id === title;
+  const selectedGame = game_id === title;
 
-    const handleGameChange = () => {
-        onGameChange(title);
-    };
+  const handleGameChange = () => {
+    onGameChange(title);
+  };
 
-    return (
-        <div className={clsx("card bg-base-100 w-52  mx-auto my-auto", {"shadow-xl": selectedGame, "shadow-inner": !selectedGame})}>
-            <figure className="px-10 pt-10">
-            <img
-                src={img}
-                alt="mineCraft"
-                className="rounded-xl" />
-            </figure>
-            <div className="card-body items-center">
-            <div className="card-actions">
-                <button className="btn btn-ghost" onClick={handleGameChange}>{title}</button>
-            </div>
-            </div>
-        </div>
-    );
+  return (
+    <button 
+      onClick={handleGameChange} 
+      className={clsx(
+        "card bg-base-100 w-52 mx-auto my-auto transform transition-transform duration-200",
+        {"shadow-xl scale-105 shadow-accent": selectedGame, "shadow-inner scale-100": !selectedGame },
+        "hover:scale-105 hover:shadow-lg"
+      )}
+    >
+      <figure className="px-10 py-10">
+        <img
+          src={img}
+          alt={title}
+          className="rounded-xl"
+        />
+      </figure>
+    </button>
+  );
 };
 
 export default GameTypeCard;

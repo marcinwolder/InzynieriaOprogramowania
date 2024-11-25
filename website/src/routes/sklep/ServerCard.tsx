@@ -32,8 +32,11 @@ const ServerCard: React.FC<ServerCardProps> = ({
         onServerSelect(planDetails.title as PlanType);
       };
   return (
-        <div className="h-full w-1/5 gap-4"> 
-            <div tabIndex={0} className={clsx("collapse collapse-open border cursor-pointer", {"border-base-300": !isSelected, "border-accent": isSelected})}>
+        <div className="h-full w-1/5 gap-4">
+            <div tabIndex={0} 
+            className={clsx("collapse collapse-open border cursor-pointer transform transition-transform duration-200 hover:scale-105 hover:shadow-lg", {"border-base-300": !isSelected, "border-accent": isSelected})}
+            onClick={handleSelect}
+            >
                 <div className="collapse-content">
                     <div className="overflow-x-auto">
                         <table className="table text-center">
