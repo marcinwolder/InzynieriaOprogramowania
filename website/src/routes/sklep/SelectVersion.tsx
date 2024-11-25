@@ -15,9 +15,6 @@ const SelectVersion: React.FC<SelectVersionProps> = ({ onVersionChange }) => {
 
     return (
     <label className="form-control w-full max-w-xs">
-        <div className="label">
-            <span className="label-text">Wybierz wersję:</span>
-        </div>
         <select className="select select-bordered" onChange={handleChange}>
         <option disabled selected={selectedVersion === ''}>1...</option>
             <option>Optifine 1.21.3</option>

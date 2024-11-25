@@ -3,6 +3,7 @@ import SubscriptionsPage from "./SubscriptionPage";
 import CustomizeServer from "./CustomizeServer";
 import SummaryOrder from "./SummaryOrder";
 import plans from './Plans.tsx';
+import CustomizeServerVer2 from "./CustiomizeServerVer2.tsx";
 
 type PlanType = keyof typeof plans;
 
@@ -48,7 +49,7 @@ export default function Sklep() {
   return (
     <div>
       <SubscriptionsPage onPlanSelected={handlePlanSelect} />
-      <CustomizeServer
+      <CustomizeServerVer2
         showSummary={showSummary}
         selectedVersion={gameVersion}
         onVersionChange={handleVersionChange}

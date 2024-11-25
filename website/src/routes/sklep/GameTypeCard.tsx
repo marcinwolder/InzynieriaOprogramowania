@@ -24,16 +24,19 @@ const GameTypeCard: React.FC<Game> = ({
     <button 
       onClick={handleGameChange} 
       className={clsx(
-        "card bg-base-100 w-48 mx-auto my-auto transform transition-transform duration-200",
-        {"shadow-xl scale-105 bg-blue-200": selectedGame, "shadow-inner scale-100": !selectedGame }, 
-        "hover:scale-105 hover:shadow-lg"
+        "card bg-base-100 w-1/5 transform transition-transform duration-200",
+        {
+          "shadow-xl scale-105 bg-accent": selectedGame,
+          "shadow-inner scale-100": !selectedGame,
+        },
+        "hover:scale-105 hover:shadow-lg",
+        "h-full" // Karta zajmuje 90% wysokości ekranu
       )}>
-    {/*nie działa bg-accent!!! */}
-      <figure className="px-10 py-10">
+      <figure className="px-2 py-2 flex items-center justify-center">
         <img
           src={img}
           alt={title}
-          className="rounded-xl"
+          className="rounded-xl object-cover"
         />
       </figure>
     </button>
