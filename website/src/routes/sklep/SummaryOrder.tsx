@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SummaryTable from './SummaryTable';
 import plans from './Plans.tsx';
 import SummaryIndividualTable from './SummaryIndividualTable.tsx';
@@ -19,6 +19,43 @@ const SummaryOrder: React.FC<SummaryProps> = ({ serverName, selectedPlan, select
     if (!plan) {
         return <div></div>;
     }
+
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+    const validateForm = () => {
+      if (!serverName) return "Proszę podać nazwę serwera.";
+      if (serverName.length < 6 || serverName.length > 15)
+        return "Nazwa serwera musi mieć od 6 do 15 znaków.";
+      if (!/^[a-zA-Z0-9.]+$/.test(serverName))
+        return "Nazwa serwera może zawierać tylko litery, cyfry i kropki.";
+      if (!selectedGame) return "Proszę wybrać grę.";
+      if (!selectedVersion) return "Proszę wybrać wersję gry.";
+      if (!selectedPlan) return "Proszę wybrać plan.";
+      return null;
+    };
+  
+    const handleBuyClick = () => {
+      const validationError = validateForm();
+      if (validationError) {
+        alert(validationError);
+        return;
+      }
+  
+      setErrorMessage(null);
+  
+      const orderData = {
+        user_id: "MarcinWolder",
+        server_name: serverName,
+        plan: selectedPlan,
+        game_id: selectedGame,
+        game_version: selectedVersion,
+        price: plans[selectedPlan].price,
+      };
+  
+      console.log("Order ready for API:", orderData);
+  
+      alert("Dziękujemy za zakup! Dane zamówienia zostały zapisane.");
+    };
 
     return (
         <div className="flex h-screen items-center justify-center">
@@ -53,7 +90,7 @@ const SummaryOrder: React.FC<SummaryProps> = ({ serverName, selectedPlan, select
           </div>
           <div className="row-span-1 col-span-2">
             <div className="flex justify-end">
-              <button className="btn btn-lg btn-accent btn-wide">Kupuję</button>
+              <button className="btn btn-lg btn-accent btn-wide" onClick={handleBuyClick}>Kupuję</button>
             </div>
           </div>
         </div>
