@@ -10,12 +10,17 @@ import App from './App';
 import Sklep from './routes/sklep';
 import Panel from './routes/panel';
 import ServerPanel from './routes/panel/ServerPanel';
+import Success from './routes/redirect/Success';
 
 const router = createHashRouter([
     {
         path: "/",
         element: <App />,
         children: [
+            {
+                path: "redirect/:orderID",
+                element: <Success />
+            },
             {
                 path: "sklep",
                 element: <Sklep />

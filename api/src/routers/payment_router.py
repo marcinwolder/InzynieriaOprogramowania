@@ -43,7 +43,7 @@ def generate_payment_session(serverId: str) -> GeneratePaymentResponse:
       success_url=f"{BASE_URL}/redirect/{order_id}",
       cancel_url=f"{BASE_URL}/", #TODO: ADD cancel url + manage cancel in second endpoint
       currency='pln',
-      line_items=[{"price": "price_1QNfT2DY0D7JFcFXZQPMzYGx", "quantity": 1}], #TODO: Get item from request
+      line_items=[{"price": "price_1QQsFVDY0D7JFcFXvW4OV4Sf", "quantity": 1}], #TODO: Get item from request
       mode="payment"
     )
 
