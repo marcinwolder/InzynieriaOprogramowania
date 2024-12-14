@@ -11,6 +11,7 @@ import Sklep from './routes/sklep';
 import Panel from './routes/panel';
 import ServerPanel from './routes/panel/ServerPanel';
 import Success from './routes/redirect/Success';
+import { Login, Register, Reset } from './routes/auth';
 
 const router = createHashRouter([
     {
@@ -18,11 +19,28 @@ const router = createHashRouter([
         element: <App />,
         children: [
             {
+                path: "auth",
+                children: [
+                    {
+                        path: "login",
+                        element: <Login />
+                    },
+                    {
+                        path: "register",
+                        element: <Register />
+                    },
+                    {
+                        path: "reset",
+                        element: <Reset />
+                    }
+                ]
+            },
+            {
                 path: "redirect/:orderID",
                 element: <Success />
             },
             {
-                path: "sklep",
+                path: "shop",
                 element: <Sklep />
             },
             {

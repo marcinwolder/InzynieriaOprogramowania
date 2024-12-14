@@ -64,7 +64,7 @@ export default function Navbar() {
               <a>Strona główna</a>
             </li>
             <li>
-              <Link to="/sklep">Sklep</Link>
+              <Link to="/shop">Sklep</Link>
             </li>
             <li>
               <a>O nas</a>
