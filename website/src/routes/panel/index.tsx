@@ -53,31 +53,6 @@ export default function Panel() {
                     </div>
                 </div>
                 <div className="flex gap-4 items-center mx-auto">
-                    <div className="card bg-base-100 w-64 shadow-xl cursor-pointer hover:w-72 transition-all">
-                        <figure className={clsx({"skeleton": loading})}>
-                            <img
-                            className={clsx({"invisible": loading})}
-                            src={server2Src}
-                            alt="laptop with random graphics on the screen" />
-                            <img
-                            className={clsx("absolute w-1/6 rounded-md top-4 right-4", {"invisible": loading})}
-                            src={minecraftSrc}
-                            alt="minecraft logo" />
-                        </figure>
-                        <div className="card-body">
-                            <h2 className={clsx("card-title", {"skeleton": loading})}>
-                                <span className={clsx({"invisible": loading})}>
-                                    Serwer Testowy
-                                </span>
-                            </h2>
-                            <p className={clsx({"skeleton": loading})}>
-                                <span className={clsx({"invisible": loading})}>Serwer stworzony na potrzeby testów oraz ...</span>
-                            </p>
-                            <div className={clsx("card-actions justify-end mt-1", {"skeleton": loading})}>
-                                <div className={clsx("badge badge-outline", {"invisible": loading})}>Wyłączony</div>
-                            </div>
-                        </div>
-                    </div>
                     <Link to="/panel/c1c6e-2eb85-7f0b7-576c6">
                         <div className="card bg-base-100 w-64 shadow-xl cursor-pointer hover:w-72 transition-all">
                             <figure className={clsx({"skeleton": loading})}>
@@ -97,7 +72,6 @@ export default function Panel() {
                                     </span>
                                 </h2>
                                 <p className={clsx({"skeleton": loading})}>
-                                    <span className={clsx({"invisible": loading})}>Drugi serwer stworzony na potrzeby testów.</span>
                                 </p>
                                 <div className={clsx("card-actions justify-end mt-1", {"skeleton": loading})}>
                                     <div className={clsx("badge badge-success", {"invisible": loading})}>Włączony</div>
@@ -105,6 +79,30 @@ export default function Panel() {
                             </div>
                         </div>
                     </Link>
+                    <div className="card bg-base-100 w-64 shadow-xl cursor-pointer hover:w-72 transition-all">
+                        <figure className={clsx({"skeleton": loading})}>
+                            <img
+                            className={clsx({"invisible": loading})}
+                            src={server2Src}
+                            alt="laptop with random graphics on the screen" />
+                            <img
+                            className={clsx("absolute w-1/6 rounded-md top-4 right-4", {"invisible": loading})}
+                            src={minecraftSrc}
+                            alt="minecraft logo" />
+                        </figure>
+                        <div className="card-body">
+                            <h2 className={clsx("card-title", {"skeleton": loading})}>
+                                <span className={clsx({"invisible": loading})}>
+                                    NowyTestowy
+                                </span>
+                            </h2>
+                            <p className={clsx({"skeleton": loading})}>
+                            </p>
+                            <div className={clsx("card-actions justify-end mt-1", {"skeleton": loading})}>
+                                <div className={clsx("badge badge-outline", {"invisible": loading})}>Wyłączony</div>
+                            </div>
+                        </div>
+                    </div>
                     <div className="card bg-base-100 w-64 shadow-xl cursor-pointer hover:w-72 hover:text-xl transition-all aspect-square opacity-60">
                         <div className="card-body flex items-center justify-center">
                             <FaPlus/>
